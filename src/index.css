@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  PortBackhaul design system — serious corporate freight.
+  Canvas #F5F6F4 · surface #FFFFFF · deep green #0F5132
+  navy #1B263B · steel grey #4A5560 · muted gold #C08A2E
+*/
+
+@layer base {
+  :root {
+    --background: 90 8% 96%;
+    --foreground: 215 37% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 37% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 37% 17%;
+
+    /* deep green #0F5132 */
+    --primary: 154 70% 19%;
+    --primary-foreground: 90 20% 97%;
+
+    /* navy #1B263B */
+    --secondary: 218 37% 17%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 90 8% 93%;
+    --muted-foreground: 210 12% 41%;
+
+    /* muted gold #C08A2E */
+    --accent: 37 62% 46%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 68% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 14% 88%;
+    --input: 210 14% 85%;
+    --ring: 154 70% 19%;
+
+    --radius: 0.5rem;
+
+    /* deep green sidebar */
+    --sidebar-background: 154 62% 12%;
+    --sidebar-foreground: 150 20% 88%;
+    --sidebar-primary: 37 62% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 154 48% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 154 40% 20%;
+    --sidebar-ring: 37 62% 46%;
+
+    /* semantic status tokens */
+    --status-verified: 154 62% 30%;
+    --status-verified-bg: 150 45% 93%;
+    --status-pending: 37 80% 42%;
+    --status-pending-bg: 40 80% 93%;
+    --status-progress: 215 60% 34%;
+    --status-progress-bg: 213 60% 94%;
+    --status-danger: 0 68% 48%;
+    --status-danger-bg: 0 70% 96%;
+    --status-neutral: 210 12% 41%;
+    --status-neutral-bg: 210 14% 94%;
+  }
+
+  .dark {
+    --background: 218 33% 10%;
+    --foreground: 150 14% 92%;
+    --card: 218 30% 13%;
+    --card-foreground: 150 14% 92%;
+    --popover: 218 30% 13%;
+    --popover-foreground: 150 14% 92%;
+    --primary: 154 46% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 24% 20%;
+    --secondary-foreground: 150 14% 92%;
+    --muted: 218 24% 18%;
+    --muted-foreground: 210 12% 62%;
+    --accent: 37 62% 52%;
+    --accent-foreground: 218 33% 10%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 218 20% 22%;
+    --input: 218 20% 24%;
+    --ring: 154 46% 40%;
+    --sidebar-background: 154 45% 9%;
+    --sidebar-foreground: 150 18% 85%;
+    --sidebar-primary: 37 62% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 154 36% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 154 30% 18%;
+    --sidebar-ring: 37 62% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* IDs, weights, money read as tabular data */
+  .font-mono,
+  code,
+  kbd,
+  samp {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* bold uppercase tracked label — section headers, eyebrow text */
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground;
+  }
+
+  .panel {
+    @apply rounded-lg border border-border bg-card shadow-[0_1px_2px_rgba(27,38,59,0.05)];
+  }
+
+  .data-grid-row {
+    @apply border-b border-border/70 transition-colors hover:bg-muted/50;
+  }
+}
+
+@layer utilities {
+  .animate-rise {
+    animation: rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade {
+    animation: fade 0.4s ease-out both;
+  }
+
+  .animate-draw {
+    stroke-dasharray: 1200;
+    animation: draw 2.4s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

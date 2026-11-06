@@ -1,0 +1,27 @@
+# PortBackhaul — public marketing pages are indexable.
+# Authenticated dashboards, admin pages and auth flows are not.
+
+User-agent: *
+Allow: /
+Allow: /cargo-owners
+Allow: /clearing-agents
+Allow: /truck-drivers
+Allow: /how-it-works
+Allow: /tema-port
+Allow: /ghana-to-burkina-faso
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+
+Disallow: /app
+Disallow: /app/
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /verify-email
+Disallow: /forgot-password
+Disallow: /auth/
+Disallow: /dashboard
+
+Sitemap: https://portbackhaul.com/sitemap.xml
